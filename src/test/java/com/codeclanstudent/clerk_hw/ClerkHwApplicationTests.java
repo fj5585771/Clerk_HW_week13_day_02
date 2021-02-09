@@ -34,8 +34,6 @@ class ClerkHwApplicationTests {
 		Folder folder = new Folder("Meetings", user);
 		folderRepository.save(folder);
 
-		File file = new File("AGM minutes", "pdf", 20, folder);
-		fileRepository.save(file);
 	}
 
 }

@@ -24,12 +24,12 @@ public class FolderController {
     }
 
     @GetMapping(value = "/folders/{id}")
-    public ResponseEntity<Optional<Folder>> getFileById(@PathVariable Long id){
+    public ResponseEntity<Optional<Folder>> getFolderById(@PathVariable Long id){
         return new ResponseEntity<Optional<Folder>>(folderRepository.findById(id), HttpStatus.OK);
     }
 
     @PostMapping(value = "/folders")
-    public ResponseEntity <Folder> createFile(@RequestBody Folder folder){
+    public ResponseEntity <Folder> createFolder(@RequestBody Folder folder){
         folderRepository.save(folder);
         return new ResponseEntity<Folder>(folder, HttpStatus.CREATED);
     }
