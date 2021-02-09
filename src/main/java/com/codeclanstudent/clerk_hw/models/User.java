@@ -1,11 +1,21 @@
-package models;
+package com.codeclanstudent.clerk_hw.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "Users")
 public class User {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column
     private String name;
+
+    @OneToMany(mappedBy = "user")
     private List<Folder> folders;
 
     public User(String name) {

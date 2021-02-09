@@ -1,17 +1,28 @@
-package models;
+package com.codeclanstudent.clerk_hw.models;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
-import java.util.ArrayList;
+import javax.persistence.*;
 
+@Entity
+@Table(name = "Files")
 public class File {
 
-    private String name;
-    private String extension;
-    private int size;
-    private String folder;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    public File(String name, String extension, int size, String folder) {
+    @Column
+    private String name;
+
+    @Column
+    private String extension;
+
+    @Column
+    private int size;
+
+    @ManyToOne
+    private Folder folder;
+
+    public File(String name, String extension, int size, Folder folder) {
         this.name = name;
         this.extension = extension;
         this.size = size;
@@ -19,7 +30,6 @@ public class File {
     }
 
     public File(){
-
     }
 
     public String getName() {
@@ -46,11 +56,19 @@ public class File {
         this.size = size;
     }
 
-    public String getFolder() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Folder getFolder() {
         return folder;
     }
 
-    public void setFolder(String folder) {
+    public void setFolder(Folder folder) {
         this.folder = folder;
     }
 }

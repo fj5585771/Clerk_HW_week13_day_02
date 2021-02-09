@@ -1,6 +1,6 @@
-package repositories;
+package com.codeclanstudent.clerk_hw.repositories;
 
-import models.User;
+import com.codeclanstudent.clerk_hw.models.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

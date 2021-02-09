@@ -1,12 +1,23 @@
-package models;
+package com.codeclanstudent.clerk_hw.models;
 
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
+@Table(name = "Folders")
 public class Folder {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Column
     private String title;
+
+    @OneToMany(mappedBy = "folder")
     private List<File> files;
+
+    @ManyToOne
     private User user;
 
     public Folder(String title, User user) {
@@ -16,7 +27,6 @@ public class Folder {
     }
 
     public Folder(){
-
     }
 
     public String getTitle() {
