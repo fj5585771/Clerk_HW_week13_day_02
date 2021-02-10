@@ -27,12 +27,24 @@ class ClerkHwApplicationTests {
 	}
 
 	@Test
-	public void showFiles(){
+	public void canCreateUserAndFolderWAssignedUser(){  // need to run the test before it is actually saved to the database
 		User user = new User("Capaldi");
 		userRepository.save(user);
 
-		Folder folder = new Folder("Meetings", user);
+		Folder folder = new Folder("AGM", user);
 		folderRepository.save(folder);
+	}
+
+	@Test
+	public void canCreateFileAndAddToFolder(){
+		User user = new User("Donald");
+		userRepository.save(user);
+		Folder folder = new Folder("AGM", user);
+		folderRepository.save(folder);
+		File file = new File("Minutes of AGM dated 18/01", "jpeg", 100, folder);
+		fileRepository.save(file);
+
+		file.
 
 	}
 

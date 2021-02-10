@@ -1,5 +1,7 @@
 package com.codeclanstudent.clerk_hw.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,11 +12,13 @@ public class Folder {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column
     private String title;
 
     @OneToMany(mappedBy = "folder")
+    @JsonIgnoreProperties({"folder"})
     private List<File> files;
 
     @ManyToOne
@@ -27,6 +31,14 @@ public class Folder {
     }
 
     public Folder(){
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -52,4 +64,6 @@ public class Folder {
     public void setUser(User user) {
         this.user = user;
     }
+
+
 }

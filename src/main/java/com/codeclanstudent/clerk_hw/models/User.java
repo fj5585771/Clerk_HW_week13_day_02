@@ -1,5 +1,7 @@
 package com.codeclanstudent.clerk_hw.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ public class User {
     private String name;
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnoreProperties({"user"})  // instructs to prevent infinite recursion.
     private List<Folder> folders;
 
     public User(String name) {
@@ -24,6 +27,14 @@ public class User {
     }
 
     public User(){
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getName() {
